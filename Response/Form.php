@@ -46,7 +46,12 @@ class Form extends Validation
             if (!$field->hasErrors()) continue;
             $messages = array();
             foreach($field->getErrors() as $error) {
-                $messages[] = $error->getMessageTemplate();
+//                $messages[] = $error->getMessageTemplate();
+                $messages[] = str_replace(
+                        array_keys($error->getMessageParameters()),
+                        $error->getMessageParameters(),
+                        $error->getMessageTemplate()
+                );
             }
             
             $list[$field->getName()] = $messages;
