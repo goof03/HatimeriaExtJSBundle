@@ -113,7 +113,7 @@ class Validation implements Response
             $msg = $this->getFormatted($this->errors);
         }
         
-    	return array('success' => $isValid, 'msg' => $msg);
+    	return array('success' => $isValid, 'errors' => $msg);
     }
     
     /**
