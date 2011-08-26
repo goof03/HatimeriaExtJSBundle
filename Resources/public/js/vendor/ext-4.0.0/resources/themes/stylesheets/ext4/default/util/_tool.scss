@@ -12,7 +12,7 @@
 
             background-color: transparent;
             background-repeat: no-repeat;
-            @include theme-background-image($theme-name, 'tools/tool-sprites.png');
+            @include theme-background-image($theme-name, 'tools/tool-sprites.gif');
 
             margin: 0;
         }
@@ -64,7 +64,7 @@
     }
     
     .#{$prefix}tool-minimize {
-        background-position: 0 -20px;
+        background-position: 0 -15px;
     }
     
     .#{$prefix}tool-maximize {
@@ -177,7 +177,7 @@
 
     .#{$prefix}tool-over {
         .#{$prefix}tool-close {
-            background-position: -20px 0;
+            background-position: -15px 0;
         }
 
         .#{$prefix}tool-minimize {

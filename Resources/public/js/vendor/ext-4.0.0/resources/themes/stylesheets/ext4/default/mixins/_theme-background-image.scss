@@ -15,7 +15,7 @@
             background-image: theme-image($theme-name, $path, $without-url, $relative);
         }
         @else {
-            @warn "@theme-background-image: #{$path} Theme image not found: #{$exists_image}";
+            @warn "@theme-background-image: Theme image not found: #{$exists_image}";
         }
     }
     @else {

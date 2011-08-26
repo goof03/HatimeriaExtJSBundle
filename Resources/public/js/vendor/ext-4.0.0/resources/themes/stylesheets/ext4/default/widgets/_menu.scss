@@ -18,7 +18,6 @@
         width: 2px;
         height: 100%;
         overflow: hidden;
-        display: $menu-separator-display;
     }
 
     .#{$prefix}menu-plain {
@@ -40,10 +39,6 @@
         white-space: nowrap;
         overflow: hidden;
         z-index: 1;
-        height: $menu-item-height;
-        margin-bottom: $menu-item-margin-bottom;
-        background-color: $menu-item-background-color;
-       
     }
 
     .#{$prefix}menu-item-cmp {
@@ -52,10 +47,10 @@
 
     .#{$prefix}menu-item-link {
         display: block;
-        padding: $menu-item-link-padding;
+        padding: 0px $menu-padding;
         margin: 1px;
         text-decoration: none !important;
-        height: $menu-item-link-height;
+        line-height: 16px;
         cursor: default;
     }
     
@@ -78,8 +73,7 @@
 
     .#{$prefix}menu-item-text {
         position: relative;
-        font-size: $menu-text-font-size;
-        font-family: $menu-text-font-family;
+        font-size: ceil($font-size * .9);
         color: $menu-text-color;
         top: -4px;
     }
@@ -127,18 +121,12 @@
         cursor: pointer;
 
         .#{$prefix}menu-item-link {
-            //@include background-gradient($menu-item-active-background-color, 'matte');
-            background-color: $menu-item-active-background-color;
+            @include background-gradient($menu-item-active-background-color, 'matte');
             margin: 0px;
-            //border: 1px solid $menu-item-active-border-color;
+            border: 1px solid $menu-item-active-border-color;
             cursor: pointer;
-            //@include border-radius(3px);
+            @include border-radius(3px);
         }
-    }
-    
-    .#{$prefix}menu-item-active span
-    {
-    	color: $menu-item-active-color;
     }
 
     .#{$prefix}menu-item-disabled {
@@ -183,13 +171,13 @@
         }
     }
 
-    //@if not $supports-gradients or $compile-all {
-    //    .#{$prefix}nlg {
-    //        .#{$prefix}menu-item-active .#{$prefix}menu-item-link {
-    //            background: $menu-item-active-background-color theme-image($theme-name, $menu-item-active-background-image) repeat-x left top;
-    //        }
-    //    }
-    //}
+    @if not $supports-gradients or $compile-all {
+        .#{$prefix}nlg {
+            .#{$prefix}menu-item-active .#{$prefix}menu-item-link {
+                background: $menu-item-active-background-color theme-image($theme-name, $menu-item-active-background-image) repeat-x left top;
+            }
+        }
+    }
     
     .#{$prefix}menu-date-item {
         border-color: #99BBE8;

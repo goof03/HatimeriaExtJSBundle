@@ -3,15 +3,14 @@
   */
 @mixin extjs-tabbar {
     .#{$prefix}tab-bar {
+        position: relative;
         background-color: transparent;
         @include background-gradient($tabbar-base-color, $tabbar-background-gradient);
         font-size: $tab-font-size;
     }
 
     .#{$prefix}nlg .#{$prefix}tab-bar {
-        //background-image: theme-image($theme-name, 'tab-bar/tab-bar-bg.gif');
-        background-color: white;
-        
+        background-image: theme-image($theme-name, 'tab-bar/tab-bar-bg.gif');
     }
 
     .#{$prefix}tab-bar-default-plain,

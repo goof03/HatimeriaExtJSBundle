@@ -46,16 +46,6 @@
                 adjust-color($bg-color, $hue: 1.444deg, $saturation: -1.136%, $lightness: -4.706%) 51%,
                 $bg-color
             )));
-        }
-        @else if $type == window-header {
-            @include background-image(linear-gradient($direction, color_stops(
-                adjust-color($bg-color, $hue: -0.857deg, $saturation: -1.63%, $lightness: 3.529%), 
-                adjust-color($bg-color, $hue: 0.158deg, $saturation: -1.21%, $lightness: 0.392%) 45%, 
-                adjust-color($bg-color, $hue: 1.154deg, $saturation: 0.607%, $lightness: -7.647%) 46%,
-                adjust-color($bg-color, $hue: 1.154deg, $saturation: 0.607%, $lightness: -7.647%) 50%,
-                adjust-color($bg-color, $hue: 1.444deg, $saturation: -1.136%, $lightness: -4.706%) 51%,
-                $bg-color
-            )));    
         } @else if $type == tabbar {
             @include background-image(linear-gradient($direction, color_stops(
                 adjust-color($bg-color, $hue: 0.0deg, $saturation: 1.604%, $lightness: 4.706%),

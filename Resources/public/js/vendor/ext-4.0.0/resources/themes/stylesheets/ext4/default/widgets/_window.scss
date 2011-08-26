@@ -11,7 +11,6 @@
         }
     }
     
-    
     .#{$prefix}window-body {
         position: relative;
         border-style: $window-body-border-style;
@@ -66,8 +65,6 @@
         display: block;
     }
     
-
-
     @include extjs-window-ui(
         'default',
         
@@ -81,14 +78,8 @@
         $ui-body-background-color: $window-body-background-color,
         $ui-body-color: $window-body-color,
 
-        $ui-background-color: $window-background-color,
-        $ui-header-background-color: $window-header-background-color,
-        $ui-header-background-gradient: $window-header-background-gradient,
-        $ui-header-text-height: $window-header-text-height,
-        $ui-header-padding: $window-header-padding
-        
+        $ui-background-color: $window-background-color
     );
-       
     
     .#{$prefix}window-body-plain {
         background: transparent;
@@ -110,21 +101,14 @@
     $ui-header-color: null,
     $ui-header-font-size: $window-header-font-size,
     $ui-header-font-weight: $window-header-font-weight,
-    $ui-header-background-color: null,
-    $ui-header-background-gradient: matte,
-    $ui-header-text-height: round($ui-header-font-size * 1.46),
-    $ui-header-padding: null,
-
+    
     $ui-body-border-color: null,
     $ui-body-background-color: null,
     $ui-body-color: null,
     
-    $ui-legacy-background: null,
-    
     $ui-background-color: null
 ){
-    //$ui-header-text-height: round($ui-header-font-size * 1.46); // 11px / 16px
-
+    $ui-header-text-height: round($ui-header-font-size * 1.46); // 11px / 16px
     
     .#{$prefix}window-#{$ui-label} {
         @if $ui-border-color != null { border-color: $ui-border-color; }
@@ -150,24 +134,13 @@
             border-color: $ui-body-border-color;
             border-width: $window-body-border-width;
         }
-
-        @if $ui-body-background-color != null { background: $ui-body-background-color; }
         
+        @if $ui-body-background-color != null { background: $ui-body-background-color; }
         @if $ui-body-color != null { color: $ui-body-color; }
     }
     
     .#{$prefix}window-header-#{$ui-label} {
         @if $ui-border-color != null { border-color: $ui-border-color; }
-        
-        @if not $supports-gradients or $compile-all {
-	        border-top:1px solid #666666 !important;
-	    }
-	    else
-	    {
-	    	border-top:1px solid #666666 !important;
-	    }
-
-	    
         zoom:1;
     }
     
@@ -181,36 +154,16 @@
         font-size: $ui-header-font-size;
     }
     
-    
     @if $ui-border-radius != null {
-    
-    	@if $ui-header-background-color != null and $ui-header-background-gradient != null {
-	        @if not $supports-gradients or $compile-all {
-	        		$ui-legacy-background: theme-image($theme-name, 'window-header/window-header-#{$ui-label}-top-bg.gif');
-	        }
-	        	
-	   }	
-    
-
-        @include x-frame('window-header', '#{$ui-label}-top',    top($ui-border-radius) right($ui-border-radius) 0 0, $window-border-width, $ui-header-padding, $ui-background-color, $ui-legacy-background);
+        @include x-frame('window-header', '#{$ui-label}-top',    top($ui-border-radius) right($ui-border-radius) 0 0, $window-border-width, 5px 5px 0, $ui-background-color);
         @include x-frame('window-header', '#{$ui-label}-right',  0 right($ui-border-radius) bottom($ui-border-radius) 0, $window-border-width, 5px 5px 5px 0, $ui-background-color);
         @include x-frame('window-header', '#{$ui-label}-bottom', 0 0 bottom($ui-border-radius) left($ui-border-radius), $window-border-width, 0 5px 5px, $ui-background-color);
         @include x-frame('window-header', '#{$ui-label}-left',   top($ui-border-radius) 0 0 left($ui-border-radius), $window-border-width, 5px 0px 5px 5px, $ui-background-color);
     }
     
     .#{$prefix}window-header-#{$ui-label}-top {
-        //@include inner-border(1px 1px 0, $ui-inner-border-color);
-        @if $ui-header-background-color != null { background-color: $ui-header-background-color; }
-        @if $ui-header-padding != null { padding: $ui-header-padding; }
-        ///////////////////////////////////////// added cause of gradient ////////////////////////////////////////////////////////////////
-        @if $supports-gradients or $compile-all {
-            @if $ui-header-background-color != null { @include background-gradient($ui-header-background-color, $ui-header-background-gradient); }
-        }
-        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        
+        @include inner-border(1px 1px 0, $ui-inner-border-color);
     }
-    
-
 
     .#{$prefix}window-header-#{$ui-label}-right {
         @include inner-border(1px 1px 1px 0, $ui-inner-border-color);

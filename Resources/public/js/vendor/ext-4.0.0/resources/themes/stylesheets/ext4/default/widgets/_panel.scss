@@ -158,7 +158,7 @@
 
             $ui-body-color: $panel-body-color,
             $ui-body-border-color: $panel-body-border-color,
-            $ui-body-border-width: $panel-body-border-width,
+            $ui-body-border-width: 1px,
             $ui-body-background-color: $panel-body-background-color
         );
         
@@ -176,7 +176,6 @@
             $ui-header-border-color: $panel-frame-border-color,
             $ui-header-background-color: $panel-header-background-color,
             $ui-header-background-gradient: $panel-header-background-gradient,
-            $ui-header-framed-padding: $panel-header-framed-padding,
 
             $ui-body-color: $panel-body-color,
             $ui-body-border-color: $panel-body-border-color,
@@ -213,9 +212,6 @@
     $ui-header-background-color: null,
     $ui-header-background-gradient: matte,
     $ui-header-inner-border-color: null,
-    $ui-header-framed-padding: null,
-    
-    $ui-legacy-background: null,
 
     $ui-body-color: null,
     $ui-body-border-color: null,
@@ -243,7 +239,6 @@
     // header
     .#{$prefix}panel-header-#{$ui-label} {
         @if $ui-header-font-size != null { font-size: $ui-header-font-size; }
-        
         line-height: $panel-header-line-height;
 
         @if $ui-header-border-color != null {
@@ -339,30 +334,15 @@
             $padding         : $panel-frame-padding,
             $background-color: $ui-body-background-color
         );
-        
-       @if $ui-header-background-color != null and $ui-header-background-gradient != null {
-	        @if not $supports-gradients or $compile-all {
-	        		$ui-legacy-background: theme-image($theme-name, 'window-header/window-header-#{$ui-label}-top-bg.gif');
-	        }
-	        	
-	   }	
 
 
-        @include x-frame('panel-header', '#{$ui-label}-top',    top($ui-border-radius) right($ui-border-radius) 0 0,    $ui-border-width, $ui-header-framed-padding, $ui-header-background-color, $ui-legacy-background);
+        @include x-frame('panel-header', '#{$ui-label}-top',    top($ui-border-radius) right($ui-border-radius) 0 0,    $ui-border-width, 4px 5px 4px 5px, $ui-header-background-color, $ui-header-background-gradient);
         @include x-frame('panel-header', '#{$ui-label}-right',  0 right($ui-border-radius) bottom($ui-border-radius) 0, $ui-border-width, 4px 5px 4px 5px, $ui-header-background-color, $ui-header-background-gradient, false, right);
         @include x-frame('panel-header', '#{$ui-label}-bottom', 0 0 bottom($ui-border-radius) left($ui-border-radius),  $ui-border-width, 4px 5px 4px 5px, $ui-header-background-color, $ui-header-background-gradient);
         @include x-frame('panel-header', '#{$ui-label}-left',   top($ui-border-radius) 0 0 left($ui-border-radius),     $ui-border-width, 4px 5px 4px 5px, $ui-header-background-color, $ui-header-background-gradient, false, right);
         
         .#{$prefix}panel-header-#{$ui-label}-top {
-        	@if $ui-header-framed-padding != null { padding: $ui-header-framed-padding; }
             @include inner-border(1px 1px 0 1px, $ui-header-inner-border-color);
-            
-            ///////////////////////////////////////// added cause of gradient ////////////////////////////////////////////////////////////////
-	        @if $supports-gradients or $compile-all {
-	            @if $ui-header-background-color != null { @include background-gradient($ui-header-background-color, $ui-header-background-gradient); }
-	        }
-	        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            
         }
 
         .#{$prefix}panel-header-#{$ui-label}-right {
@@ -379,7 +359,7 @@
     } @else {
         .#{$prefix}panel-collapsed {
             .#{$prefix}panel-header-#{$ui-label}-top {
-                @include border-bottom-radius($ui-border-radius);                
+                @include border-bottom-radius($ui-border-radius);
             }
 
             .#{$prefix}panel-header-#{$ui-label}-right {
@@ -423,7 +403,6 @@
     @if $ui-border-radius != null {
         .#{$prefix}panel .#{$prefix}panel-header-#{$ui-label}-top {
             border-bottom-width: 1px !important;
-            @if $ui-header-framed-padding != null { padding: $ui-header-framed-padding; }
         }
 
         .#{$prefix}panel .#{$prefix}panel-header-#{$ui-label}-right {
@@ -442,7 +421,7 @@
             @include border-radius($ui-border-radius);
         }
         
-        @include x-frame('panel-header', '#{$ui-label}-collapsed-top',    top($ui-border-radius) right($ui-border-radius) bottom($ui-border-radius) left($ui-border-radius), $ui-border-width, $ui-header-framed-padding, $ui-header-background-color, $ui-header-background-gradient);
+        @include x-frame('panel-header', '#{$ui-label}-collapsed-top',    top($ui-border-radius) right($ui-border-radius) bottom($ui-border-radius) left($ui-border-radius), $ui-border-width, 4px 5px 4px 5px, $ui-header-background-color, $ui-header-background-gradient);
         @include x-frame('panel-header', '#{$ui-label}-collapsed-right',  top($ui-border-radius) right($ui-border-radius) bottom($ui-border-radius) left($ui-border-radius), $ui-border-width, 4px 5px 4px 5px, $ui-header-background-color, $ui-header-background-gradient, false, right);
         @include x-frame('panel-header', '#{$ui-label}-collapsed-bottom', top($ui-border-radius) right($ui-border-radius) bottom($ui-border-radius) left($ui-border-radius), $ui-border-width, 4px 5px 4px 5px, $ui-header-background-color, $ui-header-background-gradient);
         @include x-frame('panel-header', '#{$ui-label}-collapsed-left',   top($ui-border-radius) right($ui-border-radius) bottom($ui-border-radius) left($ui-border-radius), $ui-border-width, 4px 5px 4px 5px, $ui-header-background-color, $ui-header-background-gradient, false, right);

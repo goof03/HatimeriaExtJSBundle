@@ -60,8 +60,7 @@ $tabbar-border-color: $panel-header-border-color !default;
 
 //size
 $tab-height: 20px !default;
-$tab-spacing: 2px !default;
-$tab-button-a-height: 20px !default;
+$tab-spacing: 2px;
 
 //tab bar body border and padding
 $tabbar-top-body-border-width: 1px 1px 0 !default;
@@ -86,6 +85,3 @@ $tabbar-strip-border-color: $panel-header-border-color !default;
 $tabbar-strip-background-color: $tab-base-color !default;
 $tabbar-top-strip-border-width: 1px 1px 0 !default;
 $tabbar-bottom-strip-border-width: 0 1px 1px !default;
-
-//if we need radius pictures for ie etc.
-$tab-enable-radius-pictures: true !default;
