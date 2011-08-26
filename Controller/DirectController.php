@@ -24,8 +24,13 @@ class DirectController extends Controller
     {
         $api = new Api($this->container, $this->get('request'));
         
+        if($this->container->getParameter("kernel.environment") == 'dev'){
+            $response = sprintf("Ext.require(['Ext.direct.*'], function() {Ext.Direct.addProvider(%s)});", $api);
+        }
+        else{
+            $response = sprintf("Ext.Direct.addProvider(%s);", $api);
+        }
         
-        $response = sprintf("Ext.Direct.addProvider(%s);", $api);
         // @todo move aditional content to direct parameters class 
         $response .= sprintf("
             Ext.ns('App.Direct'); 

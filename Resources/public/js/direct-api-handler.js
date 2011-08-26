@@ -4,48 +4,49 @@
  * @todo 
  * - 500 fatal without output
  */ 
+Ext.require(['Ext.direct.*'], function() {
+    Ext.Direct.on('event', function(response) {
 
-Ext.Direct.on('event', function(response) {
-    
-    // accesible if ext exception is thrown
-    var xhr = response.xhr;
-    
-    if(xhr) {
-        var window = null;
-        if(App.Direct.environment == 'dev') {
-            window = Ext.create('App.Direct.DevErrorMessage', {html: xhr.responseText});
-            window.setTitle("Backend error");
-        } else {
-            // user friendly window title
-            window = new App.Direct.UserErrorMessage();
-        }
-        
-        window.show();
-    }
-    
-    // normal response content;
-    var result = response.result;
-    
-    if(!result) return;
-    
-    // only errors are handled
-    if (typeof result.success != 'undefined'  && result.success && !result.exception) return;
-    
-    switch(result.code)
-    {
-        case 404:
-            if(console) {
-                console.log('404');
-            }
-            break;
-        case 403:
-            if(App.Direct.signinUrl) {
-                window.location = App.Direct.signinUrl;
+        // accesible if ext exception is thrown
+        var xhr = response.xhr;
+
+        if(xhr) {
+            var window = null;
+            if(App.Direct.environment == 'dev') {
+                window = Ext.create('App.Direct.DevErrorMessage', {html: xhr.responseText});
+                window.setTitle("Backend error");
             } else {
-                new App.Direct.UserErrorMessage({html: "Access forbidden error"});
+                // user friendly window title
+                window = new App.Direct.UserErrorMessage();
             }
-            break;
-    }
+
+            window.show();
+        }
+
+        // normal response content;
+        var result = response.result;
+
+        if(!result) return;
+
+        // only errors are handled
+        if (typeof result.success != 'undefined'  && result.success && !result.exception) return;
+
+        switch(result.code)
+        {
+            case 404:
+                if(console) {
+                    console.log('404');
+                }
+                break;
+            case 403:
+                if(App.Direct.signinUrl) {
+                    window.location = App.Direct.signinUrl;
+                } else {
+                    new App.Direct.UserErrorMessage({html: "Access forbidden error"});
+                }
+                break;
+        }
+    })
 });
 
 Ext.ns("App.Direct");
