@@ -49,6 +49,27 @@ Ext.require(['Ext.direct.*'], function() {
     })
 });
 
+Ext.require(['Ext.form.action.Submit'], function() {
+    Ext.form.action.Submit.override({
+        getParams: function() {
+            var nope = false,
+                configParams = this.callParent(),
+                fieldParams = this.form.getValues(nope, nope, this.submitEmptyText !== nope)
+                fieldparams_new = new Array();
+
+            if(!Ext.isEmpty(this.sfEntity)){
+                for(var propertyName in fieldParams){
+                    fieldparams_new[this.sfEntity + '[' + propertyName  + ']'] = fieldParams[propertyName];
+                }
+            }
+
+            fieldParams = fieldparams_new;
+            
+            return Ext.apply({}, fieldParams, configParams);
+        }
+    })
+ });   
+    
 Ext.ns("App.Direct");
 
 Ext.define("App.Direct.DevErrorMessage", {
