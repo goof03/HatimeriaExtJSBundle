@@ -64,4 +64,22 @@ class Form extends Validation
     {
         return $this->form->isValid();
     }
+    
+    /**
+     * Form serialize
+     * 
+     * @return array field -> value or errors
+     */
+    public function toArray(){
+        
+        if($this->form->isBound()){
+            return $this->getContent();
+        }
+        else{
+            foreach($this->form->getChildren() as $form_field) {
+                $list[$form_field->getName()] = $form_field->getClientData();
+            }
+            return $list;
+        }
+    }
 }
