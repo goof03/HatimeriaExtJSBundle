@@ -82,9 +82,12 @@ class Form extends Validation
         }
         else{
             foreach($this->form->getChildren() as $form_field) {
-                $list[$form_field->getName()] = $form_field->getClientData();
+                $fields[$form_field->getName()] = $form_field->getClientData();
             }
-            return $list;
+            return array(
+                    'success' => true,
+                    'data' => $fields
+                );
         }
     }
 }
