@@ -671,9 +671,10 @@ Ext.define('Ext.data.NodeInterface', {
                 removeAll : function(destroy, suppressEvents) {
                     var cn = this.childNodes,
                         n;
-
-                    while ((n = cn[0])) {
-                        this.removeChild(n, destroy, suppressEvents);
+                    if(Ext.isArray(cn)){
+                        while ((n = cn[0])) {
+                            this.removeChild(n, destroy, suppressEvents);
+                        }
                     }
                     return this;
                 },
