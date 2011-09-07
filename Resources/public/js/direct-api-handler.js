@@ -59,7 +59,9 @@ Ext.require(['Ext.form.action.Submit'], function() {
 
             if(!Ext.isEmpty(this.sfEntity)){
                 for(var propertyName in fieldParams){
-                    fieldparams_new[this.sfEntity + '[' + propertyName  + ']'] = fieldParams[propertyName];
+                    if(propertyName != 'leaf'){
+                        fieldparams_new[this.sfEntity + '[' + propertyName  + ']'] = fieldParams[propertyName];
+                    }
                 }
             }
 
@@ -68,7 +70,7 @@ Ext.require(['Ext.form.action.Submit'], function() {
             return Ext.apply({}, fieldParams, configParams);
         }
     })
- });   
+ });
     
 Ext.ns("App.Direct");
 
