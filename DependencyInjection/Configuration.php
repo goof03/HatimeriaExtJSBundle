@@ -20,7 +20,7 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->scalarNode('javascript_mode')->defaultValue("ext-all-debug")->end()
-                ->scalarNode('javascript_vendor_path')->defaultValue("bundles/hatimeriaextjs/js/vendor/ext-4.0.0/")->end()
+                ->scalarNode('javascript_vendor_path')->defaultValue("bundles/hatimeriaextjs/js/vendor/ext-4.1.1a/")->end()
                 ->arrayNode("mappings")
                 ->useAttributeAsKey('id')
                     ->prototype("array")
@@ -38,5 +38,5 @@ class Configuration implements ConfigurationInterface
 
         return $treeBuilder;
     }
-    
+
 }
