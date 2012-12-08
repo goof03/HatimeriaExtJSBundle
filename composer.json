@@ -3,5 +3,5 @@
     "autoload": {
         "psr-0": { "Goof03\\ExtjsBundle": "" }
     },
-    "target-dir": "Goof03/ExtjsBundle"
+    "target-dir": "Goof03/ExtJSBundle"
 }
