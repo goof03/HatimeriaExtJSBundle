@@ -1,7 +1,7 @@
 {
     "name": "goof03/extjs-bundle",
     "autoload": {
-        "psr-0": { "Goof03\\ExtjsBundle": "" }
+        "psr-0": { "Goof03\\ExtJSBundle": "" }
     },
     "target-dir": "Goof03/ExtJSBundle"
 }
